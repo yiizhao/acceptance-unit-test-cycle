@@ -23,3 +23,12 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+
+
+Then /^the director of "(.*)" should be "(.*)"/ do |movie_title, movie_director| 
+  # check the director of the current movie 
+  steps %{
+  Then I am on the details page for "#{movie_title}"
+  And I should see "#{movie_director}"
+  }
+end

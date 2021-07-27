@@ -20,7 +20,12 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
+    when /^the edit page for "(.*)"/ then edit_movie_path(Movie.find_by_title($1))
+    when /^the details page for "(.*)"/ then movie_path(Movie.find_by_title($1))
+    when /^the Similar Movies page for "(.*)"/
+      movie = Movie.find_by_title($1)
+      "/movies/movies_same_director/#{movie.id}"
+       
     else
       begin
         page_name =~ /^the (.*) page$/
