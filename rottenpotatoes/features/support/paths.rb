@@ -25,6 +25,8 @@ module NavigationHelpers
     when /^the Similar Movies page for "(.*)"/
       movie = Movie.find_by_title($1)
       "/movies/movies_same_director/#{movie.id}"
+      
+     when /^the Create New Movie page/ then new_movie_path
        
     else
       begin
